@@ -9,5 +9,5 @@ Implementation of Parashar's workflow
 
 ```mermaid
 graph LR
-    A[CellXGene data] --> B[AnnData data object] --> 
+    A[CellXGene data] --> B[AnnData data object]
 ```
