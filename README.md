@@ -9,5 +9,5 @@ Implementation of Parashar's workflow
 
 ```mermaid
 graph LR
-    A[Ingest] --> B[Clean] --> C[Transform] --> D[Load] --> E[Dashboard]
+    A[CellXGene data] --> B[AnnData data object] --> 
 ```
