@@ -7,7 +7,19 @@ Implementation of Parashar's workflow
 
 ## Pipeline Graph
 
-```mermaid
-graph LR
-    A[CellXGene data] --> B[AnnData data object]
 ```
+Import CellXGene data ─────────┐
+↓                              │
+Convert to AnnData data object │
+↓                              ╵
+Filter data               scvi-tools       
+↓                              ╷
+Train model on dataset         │ 
+↓                              │
+Cluster data ──────────────────┘
+↓
+Annotate clusters ──────── CyteType
+↓
+Plot
+```
+
