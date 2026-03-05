@@ -11,10 +11,12 @@ Implementation of Parashar's workflow
 Import CellXGene data ─────────┐
 ↓                              │
 Convert to AnnData data object │
-↓                              ╵
-Filter data               scvi-tools       
-↓                              ╷
-Train model on dataset         │ 
+↓                              │
+Filter data                    ╵
+↓                         scvi-tools                              
+Train model on dataset         ╷
+↓                              │
+Save trained model as `.pt`    │ 
 ↓                              │
 Cluster data ──────────────────┘
 ↓
