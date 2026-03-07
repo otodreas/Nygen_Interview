@@ -25,3 +25,10 @@ Annotate clusters ──────── CyteType
 Plot
 ```
 
+## Requirements
+The python version used can be found in `.python-version`, and the required packages can be installed into a viritual environment with `pip install -r requirements.txt`.
+
+`requirements.txt` only includes `ipykernel`, not `jupyter`, meaning that an IDE with a Jupyter plugin is required. If the user does not have access to one, they will need to run `pip install jupyter`.
+
+## Notes
+`adata.obs` is the **observation dataframe** with various data.
