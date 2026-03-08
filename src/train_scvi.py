@@ -54,13 +54,14 @@ scvi.model.SCVI.setup_anndata(
 )
 
 #### Train model ####
+# Set model directory as variable
 model_dir = Path.cwd().parent / "models"
 
 # Instantiate model
 model = scvi.model.SCVI(adata)
 
 # Train model
-model.train(train_size=0.8, check_val_every_n_epoch=10)
+model.train(train_size=0.8, check_val_every_n_epoch=1)
 
 # Save model
-model.save(model_dir / "scvi1.pt", overwrite=True)
+model.save(model_dir, overwrite=True)
