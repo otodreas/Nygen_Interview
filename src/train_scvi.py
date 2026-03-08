@@ -63,5 +63,12 @@ model = scvi.model.SCVI(adata)
 # Train model
 model.train(train_size=0.8, check_val_every_n_epoch=1)
 
+#### Save data and model ####
+
+# Save filtered anndata object as new .h5ad file
+adata.write_h5ad(
+    Path(__file__).resolve().parent / "data" / "breastcancer_scatlas_filter.h5ad"
+)
+
 # Save model
 model.save(model_dir / "scvi1", overwrite=True)

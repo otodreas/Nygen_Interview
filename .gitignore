@@ -1,4 +1,10 @@
+# Directories
+.ruff_cache/
 .venv/
 .vscode/
-data/breastcancer_scatlas.h5ad
+
+# Data files
+*.h5ad
+
+# Background process logs
 **/nohup.out
