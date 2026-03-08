@@ -11,7 +11,7 @@ import torch
 scvi.settings.seed = 0
 torch.set_float32_matmul_precision("high")
 
-#### PREPARE DATA ####
+#### LOAD AND PROCESS DATA ####
 # Load data
 adata = sc.read(
     filename=Path(__file__).resolve().parent.parent
@@ -59,8 +59,10 @@ model = scvi.model.SCVI(adata)
 # Train model
 model.train(train_size=0.8, check_val_every_n_epoch=1)
 
-#### SAVE DATA AND MODEL ####
+# Store model outputs in anndata object
+adata.obsm["X_scVI"] = model.get_latent_representation()
 
+#### SAVE DATA AND MODEL ####
 # Save filtered anndata object as new .h5ad file
 adata.write_h5ad(
     Path(__file__).resolve().parent.parent
