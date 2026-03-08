@@ -14,7 +14,7 @@ scvi.settings.seed = 0
 #### Prepare data ####
 # Load data
 adata = sc.read(
-    filename=Path.cwd().parent / "data" / "breastcancer_scatlas.h5ad",
+    filename=Path(__file__).resolve().parent.parent / "data" / "breastcancer_scatlas.h5ad",
     backup_url=(
         "https://datasets.cellxgene.cziscience.com/7cdea341-ca7a-40fd-8192-b8ecb2d7b91e.h5ad"
     ),
@@ -55,7 +55,7 @@ scvi.model.SCVI.setup_anndata(
 
 #### Train model ####
 # Set model directory as variable
-model_dir = Path.cwd().parent / "models"
+model_dir = Path(__file__).resolve().parent.parent / "models"
 
 # Instantiate model
 model = scvi.model.SCVI(adata)
@@ -64,4 +64,4 @@ model = scvi.model.SCVI(adata)
 model.train(train_size=0.8, check_val_every_n_epoch=1)
 
 # Save model
-model.save(model_dir, overwrite=True)
+model.save(model_dir / "scvi1", overwrite=True)
