@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 
+#### CONFIGURE ####
 # Import libraries
 from pathlib import Path
-import anndata
-import numpy as np
 import scanpy as sc
 import scvi
 import torch
 
-# Set seed
+# Set seed and torch settings
 scvi.settings.seed = 0
+torch.set_float32_matmul_precision("high")
 
-#### Prepare data ####
+#### PREPARE DATA ####
 # Load data
 adata = sc.read(
     filename=Path(__file__).resolve().parent.parent
@@ -29,7 +29,7 @@ sc.pp.filter_cells(adata, min_genes=500)
 sc.pp.filter_genes(adata, min_cells=60)
 
 # Save raw counts to `counts` layer in anndata object
-adata.layers["counts"] = adata.X.astype(np.int32)
+adata.layers["counts"] = adata.X#.astype(np.int32)
 
 # Normalize cells to 10,000 counts
 sc.pp.normalize_total(adata, target_sum=1e4)
@@ -55,22 +55,19 @@ scvi.model.SCVI.setup_anndata(
     adata, layer="counts", categorical_covariate_keys=["donor_id", "assay"]
 )
 
-#### Train model ####
-# Set model directory as variable
-model_dir = Path(__file__).resolve().parent.parent / "models"
-
+#### TRAIN MODEL ####
 # Instantiate model
 model = scvi.model.SCVI(adata)
 
 # Train model
 model.train(train_size=0.8, check_val_every_n_epoch=1)
 
-#### Save data and model ####
+#### SAVE DATA AND MODEL ####
 
 # Save filtered anndata object as new .h5ad file
 adata.write_h5ad(
-    Path(__file__).resolve().parent / "data" / "breastcancer_scatlas_filter.h5ad"
+    Path(__file__).resolve().parent.parent / "data" / "breastcancer_scatlas_filter.h5ad"
 )
 
 # Save model
-model.save(model_dir / "scvi1", overwrite=True)
+model.save(Path(__file__).resolve().parent.parent / "models" / "scvi2", overwrite=True)
