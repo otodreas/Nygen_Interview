@@ -2,9 +2,15 @@
 .ruff_cache/
 .venv/
 .vscode/
+**/__pycache__/
 
-# Data files
+# Data
 *.h5ad
+
+# CyteType
+scripts/*
+!scripts/*.py
+!scripts/*.ipynb
 
 # Background process logs
 **/nohup.out
