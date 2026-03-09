@@ -49,7 +49,7 @@ scvi.model.SCVI.setup_anndata(
     adata,
     layer="counts",
     categorical_covariate_keys=["well_id"],
-    continuous_covariate_keys=["pct_counts_mito"]
+    continuous_covariate_keys=["pct_counts_mito"],
 )
 
 #### TRAIN MODEL ####
@@ -65,12 +65,8 @@ adata.obsm["X_scVI"] = model.get_latent_representation()
 #### SAVE DATA AND MODEL ####
 # Save filtered anndata object as new .h5ad file
 adata.write_h5ad(
-    Path(__file__).resolve().parent.parent
-    / "data"
-    / "monocyte_dendritic_filter.h5ad"
+    Path(__file__).resolve().parent.parent / "data" / "monocyte_dendritic_filter.h5ad"
 )
 
 # Save model
-model.save(
-    Path(__file__).resolve().parent.parent / "models" / "scvi3", overwrite=True
-)
+model.save(Path(__file__).resolve().parent.parent / "models" / "scvi3", overwrite=True)

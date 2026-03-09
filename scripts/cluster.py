@@ -12,9 +12,7 @@ scvi.settings.seed = 0
 #### LOAD DATA ####
 # Load anndata
 adata = sc.read(
-    filename=Path(__file__).parent.parent
-    / "data"
-    / "monocyte_dendritic_filter.h5ad"
+    filename=Path(__file__).parent.parent / "data" / "monocyte_dendritic_filter.h5ad"
 )
 
 # Load fitted scVI model
@@ -33,12 +31,12 @@ sc.tl.umap(adata, min_dist=0.3)
 sc.tl.leiden(adata, flavor="igraph", key_added="clusters", n_iterations=2)
 
 # Calculate marker genes for each cluster
-sc.tl.rank_genes_groups(adata, groupby="clusters", key_added="rank_genes_clusters", method="wilcoxon")
+sc.tl.rank_genes_groups(
+    adata, groupby="clusters", key_added="rank_genes_clusters", method="wilcoxon"
+)
 
 #### SAVE NEW ANNDATA OBJECT ####
 # Save
 adata.write_h5ad(
-    Path(__file__).resolve().parent.parent
-    / "data"
-    / "monocyte_dendritic_cluster.h5ad"
+    Path(__file__).resolve().parent.parent / "data" / "monocyte_dendritic_cluster.h5ad"
 )
