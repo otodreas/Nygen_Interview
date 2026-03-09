@@ -29,8 +29,8 @@ annotator = CyteType(
 
 # Run annotator
 adata = annotator.run(
-    study_context="Human PBMC from healthy donors 25-90. Study on the efficacy of influenza vaccines.",
-    auth_token=os.getenv("AUTH_TOKEN")
+    study_context="Human PBMC from healthy donors 25-90. Study on the efficacy of influenza vaccines."#,
+    # auth_token=os.getenv("AUTH_TOKEN")
 )
 
 #### SAVE NEW ANNDATA OBJECT ####
