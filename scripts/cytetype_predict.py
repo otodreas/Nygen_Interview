@@ -4,6 +4,7 @@
 # Import libraries
 from pathlib import Path
 import os
+from dotenv import load_dotenv
 import scanpy as sc
 from cytetype import CyteType
 
@@ -29,11 +30,7 @@ annotator = CyteType(
 # Run annotator
 adata = annotator.run(
     study_context="Human PBMC from healthy donors 25-90. Study on the efficacy of influenza vaccines.",
-    llm_configs=[{
-        "provider": "anthropic",
-        "name": "claude-sonnet-4-5-20250929",
-        "apiKey": os.environ.get("API_KEY")
-    }]
+    auth_token=os.getenv("AUTH_TOKEN")
 )
 
 #### SAVE NEW ANNDATA OBJECT ####

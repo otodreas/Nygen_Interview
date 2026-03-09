@@ -11,6 +11,7 @@
 **/obs.duckdb
 **/query.json
 **/vars.h5
+.env
 
 # Background process logs
 **/nohup.out
