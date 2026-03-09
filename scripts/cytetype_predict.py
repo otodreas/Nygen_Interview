@@ -4,7 +4,7 @@
 # Import libraries
 from pathlib import Path
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import scanpy as sc
 from cytetype import CyteType
 
