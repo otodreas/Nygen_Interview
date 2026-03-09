@@ -25,10 +25,6 @@ scanpy                          Get marker genes (top genes that define clusters
 CyteType    cytetype_predict.py Predict cell types etc.
 ```
 
-## Requirements
-The python version used can be found in `.python-version`, and the required packages can be installed into a viritual environment with `pip install -r requirements.txt`.
+## Data
 
-`requirements.txt` only includes `ipykernel`, not `jupyter`, meaning that an IDE with a Jupyter plugin is required. If the user does not have access to one, they will need to run `pip install jupyter`.
-
-## Notes
-`adata.obs` is the **observation dataframe** with various data.
+See `./docs/papers/Data_paper_Gongetal2025.pdf`. It studies immune ageing. The specific data used in this pipeline was the monocytes and dendritic cells, which together form a vague cluster in the full dataset when the expression profiles are vizualised with UMAP. They do not show much DE between age groups, unlike T-cells.
