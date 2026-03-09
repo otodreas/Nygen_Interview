@@ -3,6 +3,7 @@
 #### CONFIGURE ####
 # Import libraries
 from pathlib import Path
+import os
 import scanpy as sc
 from cytetype import CyteType
 
@@ -30,8 +31,8 @@ adata = annotator.run(
     study_context="Human PBMC from healthy donors 25-90. Study on the efficacy of influenza vaccines.",
     llm_configs=[{
         "provider": "anthropic",
-        "name": "claude-sonnet-4",
-        "apiKey": "REMOVED"
+        "name": "claude-sonnet-4-20250514",
+        "apiKey": os.environ.get("API_KEY")
     }]
 )
 
