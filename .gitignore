@@ -8,9 +8,9 @@
 *.h5ad
 
 # CyteType
-scripts/*
-!scripts/*.py
-!scripts/*.ipynb
+**/obs.duckdb
+**/query.json
+**/vars.h5
 
 # Background process logs
 **/nohup.out

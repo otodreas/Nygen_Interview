@@ -11,10 +11,12 @@ from cytetype import CyteType
 adata = sc.read(
     filename=Path(__file__).parent.parent
     / "data"
-    / "monocyte_dendritic_cluster.h5ad"
+    / "monocyte_dendritic_cluster.h5ad",
+    backed="r"
 )
+
 #### CYTETYPE ####
-# Run CyteType and plot predicted cell type UMAP
+# Instantiate annotator
 group_key = "clusters"
 annotator = CyteType(
     adata,
@@ -23,8 +25,14 @@ annotator = CyteType(
     n_top_genes=100
 )
 
+# Run annotator
 adata = annotator.run(
-    study_context="Human PBMC from healthy donors 25-90. Study on the efficacy of influenza vaccines."
+    study_context="Human PBMC from healthy donors 25-90. Study on the efficacy of influenza vaccines.",
+    llm_configs=[{
+        "provider": "anthropic",
+        "name": "claude-sonnet-4",
+        "apiKey": "REMOVED"
+    }]
 )
 
 #### SAVE NEW ANNDATA OBJECT ####
