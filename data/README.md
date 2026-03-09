@@ -1,12 +1,6 @@
 # Data
 
-## breast cancer single cell atlas
-
-[.h5ad (AnnData v0.10)](https://datasets.cellxgene.cziscience.com/7cdea341-ca7a-40fd-8192-b8ecb2d7b91e.h5ad)
-
-[Dataset webpage](https://cellxgene.cziscience.com/collections/9432ae97-4803-4b9f-8f64-2b41e42ad3cb)
-
-## monocyte and dendritic cells
+The data used are from the study in `./docs/papers/Data_paper_Gongetal2025.pdf` (only monocytes and dendritic cells)
 
 [.h5ad (AnnData v0.10)](https://datasets.cellxgene.cziscience.com/c2068d3f-87e7-4a0e-9795-4dae11bcb9ac.h5ad)
 

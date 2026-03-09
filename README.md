@@ -1,11 +1,24 @@
 # Nygen_Interview
 Implementation of Parashar's workflow
 
-## Workflow (as described by Parashar)
+## Instructions
+
 1. Run basic [scIV](https://scvi-tools.org/) on any data from [CellXGene](https://cellxgene.cziscience.com/datasets)
 2. Run [CyteType](https://github.com/NygenAnalytics/CyteType) on the clusters
 
-## Pipeline Graph
+## Workflow
+
+### Overview
+
+The general workflow is
+
+```
+download data -> import, feature selection, model training -> clustering -> CyteType
+```
+
+### Programs
+
+The `py` scripts in `./scripts` are intended to be run as is, without arguments (filepaths are hard-coded, so `.h5ad` input data needs to match).
 
 ```
 Tool        Script              Pipeline step
@@ -24,6 +37,18 @@ scanpy                          Get marker genes (top genes that define clusters
                                 ↓
 CyteType    cytetype_predict.py Predict cell types etc.
 ```
+
+### Inspecting results
+
+`./scripts/CTViz.ipynb` contains plots showing
+- scVI model training diagnostics
+- UMAP projections of neighbor graph, with annotated clusters
+    - Author annotations
+    - CyteType annotations
+
+Note that during clustering, I used the default number of clusters. Had I had more time I would have also generated results with different numbers of clusters, but for now I left it as the default. It was interesting to see that even though the number of clusters are different in the two UMAP plots, there is still a lot of agreement between the plots.
+
+The CyteType report web page is linked in `./cytetype_report.txt`
 
 ## Data
 
