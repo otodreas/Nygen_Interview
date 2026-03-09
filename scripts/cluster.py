@@ -30,7 +30,7 @@ sc.pp.neighbors(adata, use_rep="X_scVI")
 sc.tl.umap(adata, min_dist=0.3)
 
 # Cluster cells
-sc.tl.leiden(adata, flavor="igraph", key_added="leiden_scVI", n_iterations=2)
+sc.tl.leiden(adata, flavor="igraph", key_added="clusters", n_iterations=2)
 
 # Calculate marker genes for each cluster
 sc.tl.rank_genes_groups(adata, groupby="clusters", key_added="rank_genes_clusters", method="wilcoxon")
