@@ -7,6 +7,9 @@
 # Data
 *.h5ad
 
+# Logs
+**/*.log
+
 # CyteType
 **/obs.duckdb
 **/query.json
