@@ -31,7 +31,7 @@ adata = annotator.run(
     study_context="Human PBMC from healthy donors 25-90. Study on the efficacy of influenza vaccines.",
     llm_configs=[{
         "provider": "anthropic",
-        "name": "claude-sonnet-4-20250514",
+        "name": "claude-sonnet-4-5-20250929",
         "apiKey": os.environ.get("API_KEY")
     }]
 )
