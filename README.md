@@ -8,21 +8,21 @@ Implementation of Parashar's workflow
 ## Pipeline Graph
 
 ```
-Import CellXGene data ─────────┐
-↓                              │
-Convert to AnnData data object │
-↓                              │
-Filter data                    ╵
-↓                         scvi-tools                              
-Train model on dataset         ╷
-↓                              │
-Save trained model as `.pt`    │ 
-↓                              │
-Cluster data ──────────────────┘
-↓
-Annotate clusters ──────── CyteType
-↓
-Plot
+Tool        Script              Pipeline step
+:::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
+CellXGene   train_scvi.py       Raw data
+                                ↓
+scanpy                          Feature selection
+                                ↓
+scvi-tools                      scVI (reduce expression profiles to 10D)
+                                ↓
+scanpy      cluster.py          Neighbor graph
+                                ↓
+scanpy                          Leiden Clustering (based on neighbor graph)
+                                ↓
+scanpy                          Get marker genes (top genes that define clusters)
+                                ↓
+CyteType    cytetype_predict.py Predict cell types etc.
 ```
 
 ## Requirements
